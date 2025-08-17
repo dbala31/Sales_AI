@@ -1153,3 +1153,194 @@
 2025-08-16 23:08:04 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 446: verified
 2025-08-16 23:08:04 | INFO     | app.services.verification_service:verify_batch:205 - Batch 33 verification completed: 2 verified, 0 failed
 2025-08-16 23:08:04 | INFO     | app.api.upload:verify_batch_background:101 - Background verification completed for batch 33: {'batch_id': 33, 'total_contacts': 2, 'verified_contacts': 2, 'failed_contacts': 0, 'success_rate': 100.0}
+2025-08-16 23:51:17 | INFO     | app.main:lifespan:26 - Database tables created
+2025-08-16 23:51:54 | INFO     | app.api.auth:login:190 - User logged in: demo@salesai.com
+2025-08-16 23:52:14 | INFO     | app.api.upload:upload_csv:48 - File uploaded: 317868ff-133d-4940-817c-9d3bff28cc60_test_contacts.csv
+2025-08-16 23:52:14 | INFO     | app.utils.csv_processor:process_csv:111 - Detected encoding: ascii
+2025-08-16 23:52:14 | INFO     | app.utils.csv_processor:process_csv:115 - Loaded CSV with 5 rows and 6 columns
+2025-08-16 23:52:14 | INFO     | app.utils.csv_processor:process_csv:119 - Normalized columns: ['first_name', 'last_name', 'email', 'phone', 'company', 'job_title']
+2025-08-16 23:52:14 | INFO     | app.utils.csv_processor:process_csv:123 - Cleaning stats: {'total_rows': 5, 'valid_rows': 5, 'missing_email': 0, 'missing_phone': 0, 'invalid_email': 0, 'invalid_phone': 5, 'duplicates_removed': 0, 'rows_removed': 0}
+2025-08-16 23:52:14 | ERROR    | app.api.upload:upload_csv:90 - Error processing upload: (sqlite3.OperationalError) table batches has no column named user_id
+[SQL: INSERT INTO batches (user_id, filename, status, total_contacts, processed_contacts, verified_contacts, failed_contacts, progress_percentage, processing_errors, completed_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at]
+[parameters: (None, 'test_contacts.csv', 'uploaded', 5, 0, 0, 0, 0.0, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-08-16 23:52:50 | INFO     | app.api.upload:upload_csv:48 - File uploaded: 0a15fe3e-665e-4761-9bcb-d7faa27d695d_test_contacts.csv
+2025-08-16 23:52:50 | INFO     | app.utils.csv_processor:process_csv:111 - Detected encoding: ascii
+2025-08-16 23:52:50 | INFO     | app.utils.csv_processor:process_csv:115 - Loaded CSV with 5 rows and 6 columns
+2025-08-16 23:52:50 | INFO     | app.utils.csv_processor:process_csv:119 - Normalized columns: ['first_name', 'last_name', 'email', 'phone', 'company', 'job_title']
+2025-08-16 23:52:50 | INFO     | app.utils.csv_processor:process_csv:123 - Cleaning stats: {'total_rows': 5, 'valid_rows': 5, 'missing_email': 0, 'missing_phone': 0, 'invalid_email': 0, 'invalid_phone': 5, 'duplicates_removed': 0, 'rows_removed': 0}
+2025-08-16 23:52:50 | ERROR    | app.api.upload:upload_csv:90 - Error processing upload: (sqlite3.OperationalError) table batches has no column named user_id
+[SQL: INSERT INTO batches (user_id, filename, status, total_contacts, processed_contacts, verified_contacts, failed_contacts, progress_percentage, processing_errors, completed_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at]
+[parameters: (None, 'test_contacts.csv', 'uploaded', 5, 0, 0, 0, 0.0, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-08-16 23:53:03 | INFO     | app.main:lifespan:26 - Database tables created
+2025-08-16 23:53:23 | INFO     | app.api.upload:upload_csv:48 - File uploaded: 4272aec7-5b88-4d56-9439-6a39ac60f894_test_contacts.csv
+2025-08-16 23:53:23 | INFO     | app.utils.csv_processor:process_csv:111 - Detected encoding: ascii
+2025-08-16 23:53:23 | INFO     | app.utils.csv_processor:process_csv:115 - Loaded CSV with 5 rows and 6 columns
+2025-08-16 23:53:23 | INFO     | app.utils.csv_processor:process_csv:119 - Normalized columns: ['first_name', 'last_name', 'email', 'phone', 'company', 'job_title']
+2025-08-16 23:53:23 | INFO     | app.utils.csv_processor:process_csv:123 - Cleaning stats: {'total_rows': 5, 'valid_rows': 5, 'missing_email': 0, 'missing_phone': 0, 'invalid_email': 0, 'invalid_phone': 5, 'duplicates_removed': 0, 'rows_removed': 0}
+2025-08-16 23:53:23 | INFO     | app.api.upload:upload_csv:76 - Created batch 1 with 5 contacts
+2025-08-16 23:53:23 | INFO     | app.services.mock_salesforce_service:load_mock_data:25 - Loaded 10 mock Salesforce contacts
+2025-08-16 23:53:23 | INFO     | app.services.verification_service:verify_batch:166 - Starting verification for batch 1 with 5 contacts
+2025-08-16 23:53:23 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 1: john.smith@techcorp.com
+2025-08-16 23:53:23 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 1: duplicate
+2025-08-16 23:53:23 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 2: sarah.johnson@innovate.com
+2025-08-16 23:53:23 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 2: duplicate
+2025-08-16 23:53:24 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 3: mike.davis@startupco.com
+2025-08-16 23:53:24 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 3: duplicate
+2025-08-16 23:53:24 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 4: jane.doe@newcompany.com
+2025-08-16 23:53:24 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 4: verified
+2025-08-16 23:53:24 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 5: bob.wilson@freshstart.com
+2025-08-16 23:53:24 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 5: verified
+2025-08-16 23:53:24 | INFO     | app.services.verification_service:verify_batch:205 - Batch 1 verification completed: 2 verified, 3 failed
+2025-08-16 23:53:24 | INFO     | app.api.upload:verify_batch_background:104 - Background verification completed for batch 1: {'batch_id': 1, 'total_contacts': 5, 'verified_contacts': 2, 'failed_contacts': 3, 'success_rate': 40.0}
+2025-08-16 23:53:32 | INFO     | app.utils.csv_processor:export_to_csv:169 - Exported 2 contacts to /var/folders/nq/100bwt152gq0dd_vm6_c5xzh0000gn/T/tmpkh2ipejl.csv
+2025-08-16 23:54:07 | INFO     | app.api.auth:register:149 - New user registered: test@example.com
+2025-08-16 23:54:18 | INFO     | app.api.upload:upload_csv:48 - File uploaded: 0c67d783-6620-4e48-9771-f8c23927b03b_test_contacts.csv
+2025-08-16 23:54:18 | INFO     | app.utils.csv_processor:process_csv:111 - Detected encoding: ascii
+2025-08-16 23:54:18 | INFO     | app.utils.csv_processor:process_csv:115 - Loaded CSV with 5 rows and 6 columns
+2025-08-16 23:54:18 | INFO     | app.utils.csv_processor:process_csv:119 - Normalized columns: ['first_name', 'last_name', 'email', 'phone', 'company', 'job_title']
+2025-08-16 23:54:18 | INFO     | app.utils.csv_processor:process_csv:123 - Cleaning stats: {'total_rows': 5, 'valid_rows': 5, 'missing_email': 0, 'missing_phone': 0, 'invalid_email': 0, 'invalid_phone': 5, 'duplicates_removed': 0, 'rows_removed': 0}
+2025-08-16 23:54:18 | INFO     | app.api.upload:upload_csv:76 - Created batch 2 with 5 contacts
+2025-08-16 23:54:18 | INFO     | app.services.mock_salesforce_service:load_mock_data:25 - Loaded 10 mock Salesforce contacts
+2025-08-16 23:54:18 | INFO     | app.services.verification_service:verify_batch:166 - Starting verification for batch 2 with 5 contacts
+2025-08-16 23:54:18 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 6: john.smith@techcorp.com
+2025-08-16 23:54:18 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 6: duplicate
+2025-08-16 23:54:18 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 7: sarah.johnson@innovate.com
+2025-08-16 23:54:18 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 7: duplicate
+2025-08-16 23:54:18 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 8: mike.davis@startupco.com
+2025-08-16 23:54:18 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 8: duplicate
+2025-08-16 23:54:18 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 9: jane.doe@newcompany.com
+2025-08-16 23:54:18 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 9: verified
+2025-08-16 23:54:18 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 10: bob.wilson@freshstart.com
+2025-08-16 23:54:18 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 10: verified
+2025-08-16 23:54:18 | INFO     | app.services.verification_service:verify_batch:205 - Batch 2 verification completed: 2 verified, 3 failed
+2025-08-16 23:54:18 | INFO     | app.api.upload:verify_batch_background:104 - Background verification completed for batch 2: {'batch_id': 2, 'total_contacts': 5, 'verified_contacts': 2, 'failed_contacts': 3, 'success_rate': 40.0}
+2025-08-16 23:54:57 | INFO     | app.main:lifespan:26 - Database tables created
+2025-08-16 23:59:54 | INFO     | app.api.auth:register:149 - New user registered: bala.dhruv@gmail.com
+2025-08-17 00:00:07 | INFO     | app.api.upload:upload_csv:48 - File uploaded: c89b3e60-f51a-4043-8f18-61bef10a1d5a_Populated_Contacts_CSV.csv
+2025-08-17 00:00:07 | INFO     | app.utils.csv_processor:process_csv:111 - Detected encoding: ascii
+2025-08-17 00:00:08 | INFO     | app.utils.csv_processor:process_csv:115 - Loaded CSV with 2 rows and 6 columns
+2025-08-17 00:00:08 | INFO     | app.utils.csv_processor:process_csv:119 - Normalized columns: ['first_name', 'last_name', 'job_title', 'company', 'email', 'phone']
+2025-08-17 00:00:08 | INFO     | app.utils.csv_processor:process_csv:123 - Cleaning stats: {'total_rows': 2, 'valid_rows': 2, 'missing_email': 0, 'missing_phone': 0, 'invalid_email': 0, 'invalid_phone': 0, 'duplicates_removed': 0, 'rows_removed': 0}
+2025-08-17 00:00:08 | INFO     | app.api.upload:upload_csv:76 - Created batch 3 with 2 contacts
+2025-08-17 00:00:08 | INFO     | app.services.mock_salesforce_service:load_mock_data:25 - Loaded 10 mock Salesforce contacts
+2025-08-17 00:00:08 | INFO     | app.services.verification_service:verify_batch:166 - Starting verification for batch 3 with 2 contacts
+2025-08-17 00:00:08 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 11: bala.dhruv@gmail.com
+2025-08-17 00:00:09 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 11: verified
+2025-08-17 00:00:09 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 12: levishmagin@gmail.com
+2025-08-17 00:00:09 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 12: verified
+2025-08-17 00:00:09 | INFO     | app.services.verification_service:verify_batch:205 - Batch 3 verification completed: 2 verified, 0 failed
+2025-08-17 00:00:09 | INFO     | app.api.upload:verify_batch_background:104 - Background verification completed for batch 3: {'batch_id': 3, 'total_contacts': 2, 'verified_contacts': 2, 'failed_contacts': 0, 'success_rate': 100.0}
+2025-08-17 00:00:16 | INFO     | app.api.upload:upload_csv:48 - File uploaded: 744f13bd-0c5a-440d-ad56-a4738d0c369d_Populated_Contacts_CSV.csv
+2025-08-17 00:00:16 | INFO     | app.utils.csv_processor:process_csv:111 - Detected encoding: ascii
+2025-08-17 00:00:16 | INFO     | app.utils.csv_processor:process_csv:115 - Loaded CSV with 2 rows and 6 columns
+2025-08-17 00:00:16 | INFO     | app.utils.csv_processor:process_csv:119 - Normalized columns: ['first_name', 'last_name', 'job_title', 'company', 'email', 'phone']
+2025-08-17 00:00:16 | INFO     | app.utils.csv_processor:process_csv:123 - Cleaning stats: {'total_rows': 2, 'valid_rows': 2, 'missing_email': 0, 'missing_phone': 0, 'invalid_email': 0, 'invalid_phone': 0, 'duplicates_removed': 0, 'rows_removed': 0}
+2025-08-17 00:00:16 | INFO     | app.api.upload:upload_csv:76 - Created batch 4 with 2 contacts
+2025-08-17 00:00:16 | INFO     | app.services.mock_salesforce_service:load_mock_data:25 - Loaded 10 mock Salesforce contacts
+2025-08-17 00:00:16 | INFO     | app.services.verification_service:verify_batch:166 - Starting verification for batch 4 with 2 contacts
+2025-08-17 00:00:17 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 13: bala.dhruv@gmail.com
+2025-08-17 00:00:17 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 13: verified
+2025-08-17 00:00:17 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 14: levishmagin@gmail.com
+2025-08-17 00:00:17 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 14: verified
+2025-08-17 00:00:17 | INFO     | app.services.verification_service:verify_batch:205 - Batch 4 verification completed: 2 verified, 0 failed
+2025-08-17 00:00:17 | INFO     | app.api.upload:verify_batch_background:104 - Background verification completed for batch 4: {'batch_id': 4, 'total_contacts': 2, 'verified_contacts': 2, 'failed_contacts': 0, 'success_rate': 100.0}
+2025-08-17 00:00:50 | INFO     | app.api.upload:upload_csv:48 - File uploaded: 782e9d58-f001-4cf5-8d11-3fc33f541adc_Populated_Contacts_CSV.csv
+2025-08-17 00:00:50 | INFO     | app.utils.csv_processor:process_csv:111 - Detected encoding: ascii
+2025-08-17 00:00:50 | INFO     | app.utils.csv_processor:process_csv:115 - Loaded CSV with 2 rows and 6 columns
+2025-08-17 00:00:50 | INFO     | app.utils.csv_processor:process_csv:119 - Normalized columns: ['first_name', 'last_name', 'job_title', 'company', 'email', 'phone']
+2025-08-17 00:00:50 | INFO     | app.utils.csv_processor:process_csv:123 - Cleaning stats: {'total_rows': 2, 'valid_rows': 2, 'missing_email': 0, 'missing_phone': 0, 'invalid_email': 0, 'invalid_phone': 0, 'duplicates_removed': 0, 'rows_removed': 0}
+2025-08-17 00:00:50 | INFO     | app.api.upload:upload_csv:76 - Created batch 5 with 2 contacts
+2025-08-17 00:00:50 | INFO     | app.services.mock_salesforce_service:load_mock_data:25 - Loaded 10 mock Salesforce contacts
+2025-08-17 00:00:50 | INFO     | app.services.verification_service:verify_batch:166 - Starting verification for batch 5 with 2 contacts
+2025-08-17 00:00:50 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 15: bala.dhruv@gmail.com
+2025-08-17 00:00:51 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 15: verified
+2025-08-17 00:00:51 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 16: levishmagin@gmail.com
+2025-08-17 00:00:51 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 16: verified
+2025-08-17 00:00:51 | INFO     | app.services.verification_service:verify_batch:205 - Batch 5 verification completed: 2 verified, 0 failed
+2025-08-17 00:00:51 | INFO     | app.api.upload:verify_batch_background:104 - Background verification completed for batch 5: {'batch_id': 5, 'total_contacts': 2, 'verified_contacts': 2, 'failed_contacts': 0, 'success_rate': 100.0}
+2025-08-17 00:04:48 | INFO     | app.api.upload:upload_csv:48 - File uploaded: cfcc88ac-d85b-4a24-abe3-09c95763d873_test_enhanced.csv
+2025-08-17 00:04:48 | INFO     | app.utils.csv_processor:process_csv:111 - Detected encoding: ascii
+2025-08-17 00:04:49 | INFO     | app.utils.csv_processor:process_csv:115 - Loaded CSV with 6 rows and 6 columns
+2025-08-17 00:04:49 | INFO     | app.utils.csv_processor:process_csv:119 - Normalized columns: ['first_name', 'last_name', 'email', 'phone', 'company', 'job_title']
+2025-08-17 00:04:49 | INFO     | app.utils.csv_processor:process_csv:123 - Cleaning stats: {'total_rows': 6, 'valid_rows': 6, 'missing_email': 0, 'missing_phone': 0, 'invalid_email': 0, 'invalid_phone': 6, 'duplicates_removed': 0, 'rows_removed': 0}
+2025-08-17 00:04:49 | INFO     | app.api.upload:upload_csv:76 - Created batch 6 with 6 contacts
+2025-08-17 00:04:49 | INFO     | app.services.mock_salesforce_service:load_mock_data:25 - Loaded 10 mock Salesforce contacts
+2025-08-17 00:04:49 | INFO     | app.services.verification_service:verify_batch:166 - Starting verification for batch 6 with 6 contacts
+2025-08-17 00:04:49 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 17: john.smith@techcorp.com
+2025-08-17 00:04:49 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 17: duplicate
+2025-08-17 00:04:49 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 18: sarah.johnson@innovate.com
+2025-08-17 00:04:50 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 18: duplicate
+2025-08-17 00:04:50 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 19: alice.brown@newtech.com
+2025-08-17 00:04:50 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 19: verified
+2025-08-17 00:04:50 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 20: david.wilson@cloudnext.com
+2025-08-17 00:04:50 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 20: duplicate
+2025-08-17 00:04:50 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 21: emma.davis@startup.com
+2025-08-17 00:04:50 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 21: verified
+2025-08-17 00:04:50 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 22: robert.miller@enterprise.com
+2025-08-17 00:04:50 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 22: verified
+2025-08-17 00:04:50 | INFO     | app.services.verification_service:verify_batch:205 - Batch 6 verification completed: 3 verified, 3 failed
+2025-08-17 00:04:50 | INFO     | app.api.upload:verify_batch_background:104 - Background verification completed for batch 6: {'batch_id': 6, 'total_contacts': 6, 'verified_contacts': 3, 'failed_contacts': 3, 'success_rate': 50.0}
+2025-08-17 00:05:00 | INFO     | app.utils.csv_processor:export_to_csv:169 - Exported 3 contacts to /var/folders/nq/100bwt152gq0dd_vm6_c5xzh0000gn/T/tmp9wbk_sao.csv
+2025-08-17 00:05:55 | INFO     | app.api.auth:login:190 - User logged in: bala.dhruv@gmail.com
+2025-08-17 00:06:02 | INFO     | app.api.upload:upload_csv:48 - File uploaded: 762f9407-1d42-4ee9-9e0b-44df2097fb55_Populated_Contacts_CSV.csv
+2025-08-17 00:06:02 | INFO     | app.utils.csv_processor:process_csv:111 - Detected encoding: ascii
+2025-08-17 00:06:03 | INFO     | app.utils.csv_processor:process_csv:115 - Loaded CSV with 2 rows and 6 columns
+2025-08-17 00:06:03 | INFO     | app.utils.csv_processor:process_csv:119 - Normalized columns: ['first_name', 'last_name', 'job_title', 'company', 'email', 'phone']
+2025-08-17 00:06:03 | INFO     | app.utils.csv_processor:process_csv:123 - Cleaning stats: {'total_rows': 2, 'valid_rows': 2, 'missing_email': 0, 'missing_phone': 0, 'invalid_email': 0, 'invalid_phone': 0, 'duplicates_removed': 0, 'rows_removed': 0}
+2025-08-17 00:06:03 | INFO     | app.api.upload:upload_csv:76 - Created batch 7 with 2 contacts
+2025-08-17 00:06:03 | INFO     | app.services.mock_salesforce_service:load_mock_data:25 - Loaded 10 mock Salesforce contacts
+2025-08-17 00:06:03 | INFO     | app.services.verification_service:verify_batch:166 - Starting verification for batch 7 with 2 contacts
+2025-08-17 00:06:03 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 23: bala.dhruv@gmail.com
+2025-08-17 00:06:03 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 23: verified
+2025-08-17 00:06:04 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 24: levishmagin@gmail.com
+2025-08-17 00:06:04 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 24: verified
+2025-08-17 00:06:04 | INFO     | app.services.verification_service:verify_batch:205 - Batch 7 verification completed: 2 verified, 0 failed
+2025-08-17 00:06:04 | INFO     | app.api.upload:verify_batch_background:104 - Background verification completed for batch 7: {'batch_id': 7, 'total_contacts': 2, 'verified_contacts': 2, 'failed_contacts': 0, 'success_rate': 100.0}
+2025-08-17 00:06:06 | INFO     | app.api.upload:upload_csv:48 - File uploaded: b1245adc-45a6-4a09-a53b-2385cbca4ef3_Fake_Contacts_CSV.csv
+2025-08-17 00:06:06 | INFO     | app.utils.csv_processor:process_csv:111 - Detected encoding: ascii
+2025-08-17 00:06:07 | INFO     | app.utils.csv_processor:process_csv:115 - Loaded CSV with 20 rows and 7 columns
+2025-08-17 00:06:07 | INFO     | app.utils.csv_processor:process_csv:119 - Normalized columns: ['first_name', 'last_name', 'job_title', 'company', 'domain', 'email', 'phone']
+2025-08-17 00:06:07 | INFO     | app.utils.csv_processor:process_csv:123 - Cleaning stats: {'total_rows': 20, 'valid_rows': 18, 'missing_email': 2, 'missing_phone': 4, 'invalid_email': 0, 'invalid_phone': 20, 'duplicates_removed': 0, 'rows_removed': 2}
+2025-08-17 00:06:07 | INFO     | app.api.upload:upload_csv:76 - Created batch 8 with 18 contacts
+2025-08-17 00:06:07 | INFO     | app.services.mock_salesforce_service:load_mock_data:25 - Loaded 10 mock Salesforce contacts
+2025-08-17 00:06:07 | INFO     | app.services.verification_service:verify_batch:166 - Starting verification for batch 8 with 18 contacts
+2025-08-17 00:06:07 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 25: george.johnson@startupx.net
+2025-08-17 00:06:07 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 25: verified
+2025-08-17 00:06:07 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 26: charlie.taylor@startupx.net
+2025-08-17 00:06:07 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 26: verified
+2025-08-17 00:06:07 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 27: bob.wilson@startupx.net
+2025-08-17 00:06:07 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 27: verified
+2025-08-17 00:06:08 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 28: diana.lee@techworld.io
+2025-08-17 00:06:08 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 28: verified
+2025-08-17 00:06:08 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 29: charlie.wilson@globalbiz.org
+2025-08-17 00:06:08 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 29: verified
+2025-08-17 00:06:08 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 30: alice.taylor@globalbiz.org
+2025-08-17 00:06:08 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 30: verified
+2025-08-17 00:06:08 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 31: george.taylor@examplecorp.com
+2025-08-17 00:06:08 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 31: verified
+2025-08-17 00:06:08 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 32: charlie.lee@globalbiz.org
+2025-08-17 00:06:08 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 32: verified
+2025-08-17 00:06:08 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 33: bob.lee@examplecorp.com
+2025-08-17 00:06:08 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 33: verified
+2025-08-17 00:06:09 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 34: charlie.lee@examplecorp.com
+2025-08-17 00:06:09 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 34: verified
+2025-08-17 00:06:09 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 35: fiona.clark@globalbiz.org
+2025-08-17 00:06:09 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 35: verified
+2025-08-17 00:06:09 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 36: alice.lee@techworld.io
+2025-08-17 00:06:09 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 36: verified
+2025-08-17 00:06:09 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 37: diana.wilson@startupx.net
+2025-08-17 00:06:09 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 37: verified
+2025-08-17 00:06:09 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 38: fiona.martin@globalbiz.org
+2025-08-17 00:06:09 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 38: verified
+2025-08-17 00:06:10 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 39: hannah.taylor@examplecorp.com
+2025-08-17 00:06:10 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 39: verified
+2025-08-17 00:06:10 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 40: alice.clark@examplecorp.com
+2025-08-17 00:06:10 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 40: verified
+2025-08-17 00:06:10 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 41: charlie.taylor@techworld.io
+2025-08-17 00:06:10 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 41: verified
+2025-08-17 00:06:10 | INFO     | app.services.verification_service:verify_contact:33 - Checking duplicate for contact 42: fiona.lee@examplecorp.com
+2025-08-17 00:06:10 | INFO     | app.services.verification_service:verify_contact:59 - Duplicate check completed for contact 42: verified
+2025-08-17 00:06:10 | INFO     | app.services.verification_service:verify_batch:205 - Batch 8 verification completed: 18 verified, 0 failed
+2025-08-17 00:06:10 | INFO     | app.api.upload:verify_batch_background:104 - Background verification completed for batch 8: {'batch_id': 8, 'total_contacts': 18, 'verified_contacts': 18, 'failed_contacts': 0, 'success_rate': 100.0}

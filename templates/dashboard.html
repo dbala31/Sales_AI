@@ -1,0 +1,590 @@
+{% extends "base.html" %}
+
+{% block title %}Sales AI - Dashboard{% endblock %}
+
+{% block content %}
+<!-- Dashboard Header -->
+<section class="py-4" style="background: linear-gradient(135deg, var(--background-orange), var(--background-blue));">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1><i class="fas fa-tachometer-alt"></i> Sales AI Dashboard</h1>
+                <p class="lead mb-0">Manage your contact verification projects</p>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <div id="userWelcome" class="text-muted"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Actions -->
+<section class="py-4">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-rocket"></i> Get Started</h3>
+            </div>
+            <div class="card-body text-center">
+                <h4>Ready to verify your contacts?</h4>
+                <p class="text-muted mb-4">Upload your CSV file and let our AI remove duplicates and verify contacts</p>
+                
+                <!-- Upload Area -->
+                <div class="upload-area" onclick="document.getElementById('csvFileInput').click()">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h5>Drop your CSV file here or click to browse</h5>
+                    <p class="text-muted">Supports CSV files with contact information (email, name, phone, company)</p>
+                    <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <button class="btn btn-secondary w-100" onclick="downloadSampleCSV()">
+                            <i class="fas fa-download"></i> Download Sample CSV
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-primary w-100" onclick="document.getElementById('csvFileInput').click()">
+                            <i class="fas fa-upload"></i> Upload CSV File
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Statistics -->
+<section class="py-4">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col">
+                <h3><i class="fas fa-chart-bar"></i> Recent Activity</h3>
+            </div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number" id="totalContacts">-</span>
+                <span class="stat-label">Total Contacts Processed</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="verifiedContacts">-</span>
+                <span class="stat-label">Verified Contacts</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="verificationRate">-</span>
+                <span class="stat-label">Success Rate</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="avgQuality">-</span>
+                <span class="stat-label">Avg Quality Score</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Upload Status -->
+<section class="py-4" id="uploadSection" style="display: none;">
+    <div class="container">
+        <div class="card border-primary">
+            <div class="card-header" style="background: linear-gradient(45deg, var(--primary-orange), var(--primary-blue)); color: white;">
+                <h4><i class="fas fa-cloud-upload-alt"></i> Upload Progress</h4>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <h5 id="uploadStatus">Uploading your CSV file...</h5>
+                    <div class="progress mb-3">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" id="uploadProgressBar" style="width: 0%; background: linear-gradient(90deg, var(--primary-orange), var(--primary-blue));"></div>
+                    </div>
+                    <p class="text-muted" id="uploadDetails">Please wait while we process your file...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Processing Status -->
+<section class="py-4" id="processingSection" style="display: none;">
+    <div class="container">
+        <div class="card border-warning">
+            <div class="card-header" style="background: var(--warning); color: var(--text-dark);">
+                <h4><i class="fas fa-cogs"></i> Verification in Progress</h4>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <h5 id="verificationStatus">Verifying contacts against Salesforce...</h5>
+                    <div class="progress mb-3">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" id="verificationProgressBar" style="width: 0%; background: var(--warning);"></div>
+                    </div>
+                    <p class="text-muted" id="verificationDetails">Checking for duplicates and verifying contact information...</p>
+                    
+                    <!-- Verification Steps -->
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <div class="verification-step" id="step-upload">
+                                <i class="fas fa-check-circle text-success"></i>
+                                <span>Upload Complete</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="verification-step" id="step-processing">
+                                <i class="fas fa-spinner fa-spin text-primary"></i>
+                                <span>Processing Contacts</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="verification-step" id="step-complete">
+                                <i class="fas fa-clock text-muted"></i>
+                                <span>Awaiting Completion</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Export Section -->
+<section class="py-4" id="exportSection" style="display: none;">
+    <div class="container">
+        <div class="card border-success">
+            <div class="card-header" style="background: var(--success); color: white;">
+                <h4><i class="fas fa-check-circle"></i> Verification Complete!</h4>
+            </div>
+            <div class="card-body text-center">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <h5>🎉 Your contacts have been processed successfully!</h5>
+                        <p class="text-muted mb-4">We've removed duplicates and verified your contact list against Salesforce data</p>
+                        
+                        <!-- Results Summary -->
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                <div class="result-stat">
+                                    <div class="stat-number text-primary" id="totalProcessed">-</div>
+                                    <div class="stat-label">Total Processed</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="result-stat">
+                                    <div class="stat-number text-success" id="verifiedCount">-</div>
+                                    <div class="stat-label">New Contacts</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="result-stat">
+                                    <div class="stat-number text-warning" id="duplicatesCount">-</div>
+                                    <div class="stat-label">Duplicates Removed</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Export Options -->
+                        <div class="export-options">
+                            <h6 class="mb-3">Download Your Verified Contacts</h6>
+                            <div id="exportContainer" class="mb-3">
+                                <!-- Export button will be inserted here -->
+                            </div>
+                            <small class="text-muted">
+                                The downloaded CSV will contain only new contacts that don't exist in your Salesforce database
+                            </small>
+                        </div>
+                        
+                        <hr class="my-4">
+                        
+                        <div class="action-buttons">
+                            <button class="btn btn-primary me-3" onclick="startNewVerification()">
+                                <i class="fas fa-plus"></i> Process Another File
+                            </button>
+                            <button class="btn btn-outline-secondary" onclick="viewBatchDetails()">
+                                <i class="fas fa-eye"></i> View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Recent Batches -->
+<section class="py-4">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h4><i class="fas fa-history"></i> Recent Verification Batches</h4>
+            </div>
+            <div class="card-body">
+                <div id="recentBatches">
+                    <p class="text-muted text-center">No recent batches found. Upload a CSV file to get started!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Help Section -->
+<section class="py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-question-circle"></i> Need Help?</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Get the most out of Sales AI with these resources:</p>
+                        <ul>
+                            <li><a href="#" class="text-decoration-none">CSV Format Guide</a></li>
+                            <li><a href="#" class="text-decoration-none">Understanding Quality Scores</a></li>
+                            <li><a href="#" class="text-decoration-none">Salesforce Integration</a></li>
+                            <li><a href="/docs" class="text-decoration-none">API Documentation</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-lightbulb"></i> Pro Tips</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Include as much contact information as possible for better verification</li>
+                            <li>Use standard CSV format with headers</li>
+                            <li>Remove obvious duplicates before uploading for faster processing</li>
+                            <li>Download results immediately after processing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+let currentBatchId = null;
+
+// Check authentication on page load
+document.addEventListener('DOMContentLoaded', () => {
+    if (!window.salesAI || !window.salesAI.isAuthenticated()) {
+        window.location.href = '/login';
+        return;
+    }
+    
+    // Update user welcome message
+    updateUserWelcome();
+    
+    // Load recent batches
+    loadRecentBatches();
+});
+
+function updateUserWelcome() {
+    const user = window.salesAI.user;
+    if (user) {
+        const welcomeEl = document.getElementById('userWelcome');
+        const name = user.first_name || user.username;
+        welcomeEl.innerHTML = `
+            <small>Welcome back,</small><br>
+            <strong>${name}</strong>
+        `;
+    }
+}
+
+async function downloadSampleCSV() {
+    try {
+        const response = await fetch('/api/mock/sample-data/download');
+        if (response.ok) {
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'sample_contacts.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        } else {
+            window.salesAI.showAlert('Failed to download sample CSV', 'danger');
+        }
+    } catch (error) {
+        window.salesAI.showAlert('Download error: ' + error.message, 'danger');
+    }
+}
+
+async function loadRecentBatches() {
+    try {
+        // This would typically load user's recent batches
+        // For now, we'll show a placeholder
+        const batchesContainer = document.getElementById('recentBatches');
+        batchesContainer.innerHTML = `
+            <div class="text-center">
+                <p class="text-muted">Upload your first CSV file to see your verification history here</p>
+            </div>
+        `;
+    } catch (error) {
+        console.error('Failed to load recent batches:', error);
+    }
+}
+
+function startNewVerification() {
+    // Reset the interface for a new verification
+    document.getElementById('processingSection').style.display = 'none';
+    document.getElementById('exportSection').style.display = 'none';
+    currentBatchId = null;
+    
+    // Scroll to upload area
+    document.querySelector('.upload-area').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Override the file processing from main.js for dashboard-specific behavior
+if (window.salesAI) {
+    const originalProcessCSV = window.salesAI.processCSVFile;
+    
+    window.salesAI.processCSVFile = async function(file) {
+        // Reset all sections
+        document.getElementById('uploadSection').style.display = 'none';
+        document.getElementById('processingSection').style.display = 'none';
+        document.getElementById('exportSection').style.display = 'none';
+        
+        // Show upload progress
+        showUploadProgress();
+        
+        try {
+            const result = await originalProcessCSV.call(this, file);
+            currentBatchId = result.batch_id;
+            
+            // Complete upload, start verification
+            completeUpload(result);
+            
+            // Start monitoring verification progress
+            monitorBatchProgressDashboard(result.batch_id);
+            
+            return result;
+        } catch (error) {
+            hideAllProgress();
+            throw error;
+        }
+    };
+}
+
+function showUploadProgress() {
+    document.getElementById('uploadSection').style.display = 'block';
+    
+    // Animate upload progress
+    let progress = 0;
+    const uploadBar = document.getElementById('uploadProgressBar');
+    const uploadStatus = document.getElementById('uploadStatus');
+    const uploadDetails = document.getElementById('uploadDetails');
+    
+    const progressInterval = setInterval(() => {
+        progress += Math.random() * 15;
+        if (progress > 90) progress = 90;
+        
+        uploadBar.style.width = progress + '%';
+        
+        if (progress < 30) {
+            uploadDetails.textContent = 'Reading CSV file...';
+        } else if (progress < 60) {
+            uploadDetails.textContent = 'Validating contact data...';
+        } else {
+            uploadDetails.textContent = 'Preparing for verification...';
+        }
+    }, 200);
+    
+    // Store interval for cleanup
+    window.uploadProgressInterval = progressInterval;
+}
+
+function completeUpload(result) {
+    // Clear upload progress interval
+    if (window.uploadProgressInterval) {
+        clearInterval(window.uploadProgressInterval);
+    }
+    
+    // Complete upload progress
+    const uploadBar = document.getElementById('uploadProgressBar');
+    const uploadStatus = document.getElementById('uploadStatus');
+    const uploadDetails = document.getElementById('uploadDetails');
+    
+    uploadBar.style.width = '100%';
+    uploadStatus.textContent = 'Upload Complete!';
+    uploadDetails.textContent = `Successfully uploaded ${result.total_contacts} contacts`;
+    
+    // After 1 second, transition to verification
+    setTimeout(() => {
+        document.getElementById('uploadSection').style.display = 'none';
+        document.getElementById('processingSection').style.display = 'block';
+        
+        // Update verification steps
+        updateVerificationStep('upload', 'complete');
+        updateVerificationStep('processing', 'active');
+    }, 1000);
+}
+
+function updateVerificationStep(step, status) {
+    const stepElement = document.getElementById(`step-${step}`);
+    if (!stepElement) return;
+    
+    const icon = stepElement.querySelector('i');
+    
+    switch (status) {
+        case 'complete':
+            icon.className = 'fas fa-check-circle text-success';
+            break;
+        case 'active':
+            icon.className = 'fas fa-spinner fa-spin text-primary';
+            break;
+        case 'pending':
+            icon.className = 'fas fa-clock text-muted';
+            break;
+    }
+}
+
+function hideAllProgress() {
+    document.getElementById('uploadSection').style.display = 'none';
+    document.getElementById('processingSection').style.display = 'none';
+    document.getElementById('exportSection').style.display = 'none';
+    
+    // Clear any intervals
+    if (window.uploadProgressInterval) {
+        clearInterval(window.uploadProgressInterval);
+    }
+}
+
+function updateVerificationProgress(percentage, message) {
+    const progressBar = document.getElementById('verificationProgressBar');
+    const status = document.getElementById('verificationStatus');
+    const details = document.getElementById('verificationDetails');
+    
+    if (progressBar) {
+        progressBar.style.width = percentage + '%';
+    }
+    
+    if (status && message) {
+        status.textContent = message;
+    }
+    
+    if (details) {
+        if (percentage < 25) {
+            details.textContent = 'Initializing verification process...';
+        } else if (percentage < 50) {
+            details.textContent = 'Checking contacts against Salesforce database...';
+        } else if (percentage < 75) {
+            details.textContent = 'Identifying duplicates and new contacts...';
+        } else {
+            details.textContent = 'Finalizing verification results...';
+        }
+    }
+}
+
+async function monitorBatchProgressDashboard(batchId) {
+    const checkProgress = async () => {
+        try {
+            const batch = await window.salesAI.apiCall(`/api/upload/batch/${batchId}/status`);
+            
+            // Update verification progress bar
+            const percentage = batch.progress_percentage || 0;
+            const message = `Processing ${batch.processed_contacts || 0} of ${batch.total_contacts || 0} contacts...`;
+            updateVerificationProgress(percentage, message);
+            
+            if (batch.status === 'completed') {
+                // Complete verification step
+                updateVerificationStep('processing', 'complete');
+                updateVerificationStep('complete', 'complete');
+                
+                // Wait a moment, then show export section
+                setTimeout(() => {
+                    document.getElementById('processingSection').style.display = 'none';
+                    document.getElementById('exportSection').style.display = 'block';
+                    
+                    // Update result statistics
+                    updateResultStatistics(batch);
+                    
+                    // Show enhanced export button
+                    showEnhancedExportButton(batchId);
+                    
+                    // Update dashboard stats
+                    window.salesAI.loadDashboardData();
+                    
+                    // Update recent batches
+                    loadRecentBatches();
+                }, 1500);
+                
+            } else if (batch.status === 'failed') {
+                hideAllProgress();
+                window.salesAI.showAlert('Processing failed: ' + (batch.processing_errors || 'Unknown error'), 'danger');
+            } else {
+                // Still processing, check again
+                setTimeout(checkProgress, 2000);
+            }
+        } catch (error) {
+            console.error('Failed to check batch progress:', error);
+            setTimeout(checkProgress, 5000); // Retry after longer delay
+        }
+    };
+
+    checkProgress();
+}
+
+function updateResultStatistics(batch) {
+    document.getElementById('totalProcessed').textContent = batch.total_contacts || 0;
+    document.getElementById('verifiedCount').textContent = batch.verified_contacts || 0;
+    document.getElementById('duplicatesCount').textContent = (batch.total_contacts - batch.verified_contacts) || 0;
+}
+
+function showEnhancedExportButton(batchId) {
+    const exportContainer = document.getElementById('exportContainer');
+    if (exportContainer) {
+        exportContainer.innerHTML = `
+            <button class="export-btn" onclick="downloadVerifiedContacts(${batchId})">
+                <i class="fas fa-download"></i> Download Verified Contacts CSV
+            </button>
+        `;
+    }
+}
+
+async function downloadVerifiedContacts(batchId) {
+    try {
+        window.salesAI.showAlert('Preparing download...', 'info');
+        
+        const response = await fetch(window.salesAI.baseURL + `/api/upload/batch/${batchId}/download`, {
+            headers: window.salesAI.token ? {
+                'Authorization': `Bearer ${window.salesAI.token}`
+            } : {}
+        });
+
+        if (!response.ok) {
+            throw new Error('Download failed');
+        }
+
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `verified_contacts_batch_${batchId}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+
+        window.salesAI.showAlert('✅ Download completed successfully!', 'success');
+    } catch (error) {
+        window.salesAI.showAlert('❌ Download failed: ' + error.message, 'danger');
+    }
+}
+
+function viewBatchDetails() {
+    if (currentBatchId) {
+        window.open(`/api/upload/batch/${currentBatchId}/contacts`, '_blank');
+    }
+}
+</script>
+{% endblock %}

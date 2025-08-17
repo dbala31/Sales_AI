@@ -1,15 +1,16 @@
 from fastapi import APIRouter, Depends, UploadFile, File, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 import os
 import uuid
 from loguru import logger
 
 from app.core.database import get_db
 from app.core.config import settings
-from app.models import Batch, Contact
+from app.models import Batch, Contact, User
 from app.utils.csv_processor import CSVProcessor
 from app.services.verification_service import VerificationService
+from app.api.auth_optional import get_current_user_optional
 
 router = APIRouter(prefix="/api/upload", tags=["upload"])
 
@@ -18,7 +19,8 @@ router = APIRouter(prefix="/api/upload", tags=["upload"])
 async def upload_csv(
     background_tasks: BackgroundTasks,
     file: UploadFile = File(...),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: Optional[User] = Depends(get_current_user_optional)
 ):
     """Upload and process CSV file for contact verification"""
     
@@ -54,7 +56,8 @@ async def upload_csv(
         batch = Batch(
             filename=file.filename,
             total_contacts=len(contacts_data),
-            status="uploaded"
+            status="uploaded",
+            user_id=current_user.id if current_user else None
         )
         db.add(batch)
         db.commit()

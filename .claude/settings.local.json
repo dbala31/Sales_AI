@@ -12,7 +12,8 @@
       "Bash(pkill:*)",
       "Bash(true)",
       "Bash(python:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(alembic revision:*)"
     ],
     "deny": [],
     "ask": []

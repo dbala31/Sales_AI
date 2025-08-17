@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, Float, Text
+from sqlalchemy import Column, Integer, String, DateTime, Float, Text, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from app.core.database import Base
@@ -8,6 +8,7 @@ class Batch(Base):
     __tablename__ = "batches"
     
     id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=True)  # nullable for backward compatibility
     filename = Column(String(255), nullable=False)
     status = Column(String(50), default="processing")  # processing, completed, failed, cancelled
     
@@ -26,6 +27,7 @@ class Batch(Base):
     completed_at = Column(DateTime(timezone=True))
     
     # Relationships
+    user = relationship("User", back_populates="batches")
     contacts = relationship("Contact", back_populates="batch", cascade="all, delete-orphan")
     
     @property

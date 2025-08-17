@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sales AI - Contact Verification Platform{% endblock %}</title>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/main.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="navbar-brand">
+                <i class="fas fa-robot"></i>
+                Sales AI
+            </a>
+            
+            <ul class="navbar-nav" id="navbarNav">
+                {% block navigation %}
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/dashboard" class="nav-link auth-required">Dashboard</a></li>
+                <li><a href="/login" class="nav-link no-auth-required">Login</a></li>
+                <li><a href="/register" class="nav-link no-auth-required">Register</a></li>
+                <li>
+                    <div id="userInfo" class="auth-required"></div>
+                </li>
+                {% endblock %}
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Alert Container -->
+    <div id="alertContainer"></div>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Loading Overlay -->
+    <div id="globalLoader"></div>
+
+    <!-- Footer -->
+    <footer class="mt-5 p-4 text-center" style="background: var(--background-light);">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 Sales AI Contact Verification Platform. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/static/js/main.js"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

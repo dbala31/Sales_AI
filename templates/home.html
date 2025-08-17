@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}Sales AI - Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container text-center">
+        <h1><i class="fas fa-robot"></i> Sales AI Contact Verification</h1>
+        <p class="lead">Streamline your sales process with AI-powered contact verification and deduplication</p>
+        
+        <div class="no-auth-required">
+            <a href="/register" class="btn btn-primary btn-lg me-3">Get Started Free</a>
+            <a href="/login" class="btn btn-secondary btn-lg">Login</a>
+        </div>
+        
+        <div class="auth-required" style="display: none;">
+            <a href="/dashboard" class="btn btn-primary btn-lg">Go to Dashboard</a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2>Why Choose Sales AI?</h2>
+            <p class="text-muted">Powerful features to enhance your contact verification workflow</p>
+        </div>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>Smart Duplicate Detection</h3>
+                <p>Automatically identify and remove duplicate contacts from your lists using advanced Salesforce integration</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lightning-bolt"></i>
+                </div>
+                <h3>Lightning Fast</h3>
+                <p>Process thousands of contacts in minutes with our optimized verification pipeline</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Data Security</h3>
+                <p>Your contact data is processed securely with enterprise-grade encryption and privacy protection</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Detailed Analytics</h3>
+                <p>Get comprehensive insights into your contact quality and verification results</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <h3>Easy Export</h3>
+                <p>Export your verified contacts in CSV format, ready for your CRM or marketing tools</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Team Collaboration</h3>
+                <p>Work together with your team on contact verification projects with user management</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="py-5" style="background: var(--background-light);">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2>How It Works</h2>
+            <p class="text-muted">Simple 3-step process to clean your contact lists</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4 text-center mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-upload"></i>
+                        </div>
+                        <h4>1. Upload CSV</h4>
+                        <p>Upload your contact list in CSV format. We support standard contact fields like name, email, phone, and company.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 text-center mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4>2. AI Processing</h4>
+                        <p>Our AI automatically checks each contact against your Salesforce data to identify duplicates and verify information.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 text-center mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4>3. Export Results</h4>
+                        <p>Download your clean, verified contact list with duplicates removed and quality scores assigned.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5">
+    <div class="container text-center">
+        <div class="card" style="background: linear-gradient(135deg, var(--light-orange), var(--light-blue)); border: none;">
+            <div class="card-body p-5">
+                <h2 class="text-white mb-4">Ready to Clean Your Contact Lists?</h2>
+                <p class="text-white mb-4 lead">Join thousands of sales professionals who trust Sales AI for contact verification</p>
+                
+                <div class="no-auth-required">
+                    <a href="/register" class="btn btn-primary btn-lg me-3">Start Free Trial</a>
+                    <a href="/login" class="btn btn-secondary btn-lg">Login to Account</a>
+                </div>
+                
+                <div class="auth-required" style="display: none;">
+                    <a href="/dashboard" class="btn btn-primary btn-lg">Access Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

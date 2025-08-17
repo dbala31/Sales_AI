@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Sales AI - Login{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h2><i class="fas fa-sign-in-alt"></i> Login to Sales AI</h2>
+                        <p class="mb-0 text-muted">Welcome back! Please sign in to your account</p>
+                    </div>
+                    
+                    <div class="card-body">
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label for="email" class="form-label">
+                                    <i class="fas fa-envelope"></i> Email Address
+                                </label>
+                                <input 
+                                    type="email" 
+                                    class="form-control" 
+                                    id="email" 
+                                    name="email" 
+                                    required 
+                                    placeholder="Enter your email"
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="password" class="form-label">
+                                    <i class="fas fa-lock"></i> Password
+                                </label>
+                                <input 
+                                    type="password" 
+                                    class="form-control" 
+                                    id="password" 
+                                    name="password" 
+                                    required 
+                                    placeholder="Enter your password"
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input"> Remember me
+                                    </label>
+                                    <a href="#" class="text-decoration-none">Forgot password?</a>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary w-100 btn-lg">
+                                <i class="fas fa-sign-in-alt"></i> Sign In
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="card-footer text-center">
+                        <p class="mb-0">
+                            Don't have an account? 
+                            <a href="/register" class="text-decoration-none font-weight-bold">Create one here</a>
+                        </p>
+                        <div class="auth-required mt-2" style="display: none;">
+                            <small class="text-muted">
+                                You're already logged in. <a href="/dashboard" class="text-decoration-none">Go to Dashboard</a>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Demo Account Info -->
+                <div class="card mt-4" style="background: var(--background-blue);">
+                    <div class="card-body text-center">
+                        <h5><i class="fas fa-info-circle"></i> Demo Account</h5>
+                        <p class="mb-2">Try the platform with our demo account:</p>
+                        <p class="mb-0">
+                            <strong>Email:</strong> demo@salesai.com<br>
+                            <strong>Password:</strong> demo123
+                        </p>
+                        <button 
+                            type="button" 
+                            class="btn btn-secondary btn-sm mt-2" 
+                            onclick="fillDemoCredentials()"
+                        >
+                            Use Demo Account
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+function fillDemoCredentials() {
+    document.getElementById('email').value = 'demo@salesai.com';
+    document.getElementById('password').value = 'demo123';
+}
+
+// No automatic redirect - let user navigate manually if already authenticated
+</script>
+{% endblock %}
