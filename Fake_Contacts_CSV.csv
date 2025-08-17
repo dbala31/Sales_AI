@@ -1,0 +1,21 @@
+first_name,last_name,title,company,domain,email,phone
+George,Johnson,Sales Manager,Startupx,startupx.net,george.johnson@startupx.net,555-666-7777
+Charlie,Taylor,Recruiter,Startupx,startupx.net,charlie.taylor@startupx.net,555-111-2222
+Bob,Wilson,Recruiter,Startupx,startupx.net,bob.wilson@startupx.net,555-111-2222
+George,Lee,Recruiter,Globalbiz,globalbiz.org,,
+Diana,Lee,CEO,Techworld,techworld.io,diana.lee@techworld.io,
+Hannah,Martin,CEO,Techworld,techworld.io,,555-111-2222
+Charlie,Wilson,Product Manager,Globalbiz,globalbiz.org,charlie.wilson@globalbiz.org,
+Alice,Taylor,Sales Manager,Globalbiz,globalbiz.org,alice.taylor@globalbiz.org,555-666-7777
+George,Taylor,Engineer,Examplecorp,examplecorp.com,george.taylor@examplecorp.com,555-333-4444
+Charlie,Lee,CTO,Globalbiz,globalbiz.org,charlie.lee@globalbiz.org,555-123-4567
+Bob,Lee,Data Analyst,Examplecorp,examplecorp.com,bob.lee@examplecorp.com,555-666-7777
+Charlie,Lee,Recruiter,Examplecorp,examplecorp.com,charlie.lee@examplecorp.com,555-123-4567
+Fiona,Clark,Product Manager,Globalbiz,globalbiz.org,fiona.clark@globalbiz.org,
+Alice,Lee,Recruiter,Techworld,techworld.io,alice.lee@techworld.io,555-111-2222
+Diana,Wilson,Product Manager,Startupx,startupx.net,diana.wilson@startupx.net,555-123-4567
+Fiona,Martin,Marketing Lead,Globalbiz,globalbiz.org,fiona.martin@globalbiz.org,555-111-2222
+Hannah,Taylor,CEO,Examplecorp,examplecorp.com,hannah.taylor@examplecorp.com,555-333-4444
+Alice,Clark,Product Manager,Examplecorp,examplecorp.com,alice.clark@examplecorp.com,555-111-2222
+Charlie,Taylor,Recruiter,Techworld,techworld.io,charlie.taylor@techworld.io,555-123-4567
+Fiona,Lee,Data Analyst,Examplecorp,examplecorp.com,fiona.lee@examplecorp.com,555-111-2222

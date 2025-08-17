@@ -1,0 +1,21 @@
+first_name,last_name,email,phone,company,job_title,linkedin_url
+John,Smith,john.smith@techcorp.com,555-0123,TechCorp Inc,Software Engineer,https://linkedin.com/in/john-smith
+Sarah,Johnson,sarah.johnson@innovate.com,555-0124,Innovate Solutions,Product Manager,
+Mike,Davis,mike.davis@startupco.com,555-0125,StartupCo,CTO,https://linkedin.com/in/mike-davis-cto
+Emma,Wilson,emma.wilson@newtech.com,555-0200,NewTech Corp,Marketing Director,
+Robert,Chen,robert.chen@consulting.com,555-0201,Chen Consulting,Senior Consultant,
+Jessica,Brown,jessica.brown@freelance.com,555-0202,Freelance,Web Developer,
+Alex,Martinez,alex.martinez@growth.co,555-0203,Growth Co,Sales Manager,
+Michelle,Taylor,michelle.taylor@design.studio,555-0204,Design Studio,Creative Director,
+Kevin,Lee,kevin.lee@techstart.io,555-0205,TechStart,Founder,
+Lisa,Anderson,lisa.anderson@marketing.pro,555-0206,Marketing Pro,Content Manager,
+Daniel,Garcia,daniel.garcia@software.dev,555-0207,Software Dev LLC,Full Stack Developer,
+Amanda,White,amanda.white@consulting.biz,555-0208,White Consulting,Business Analyst,
+Brian,Thomas,brian.thomas@ecommerce.shop,555-0209,Ecommerce Shop,Operations Manager,
+Nicole,Harris,nicole.harris@social.media,555-0210,Social Media Inc,Community Manager,
+Steven,Clark,steven.clark@finance.firm,555-0211,Finance Firm,Financial Advisor,
+Rachel,Lewis,rachel.lewis@healthcare.org,555-0212,Healthcare Org,Project Manager,
+Jason,Walker,jason.walker@real.estate,555-0213,Real Estate Co,Real Estate Agent,
+Monica,Hall,monica.hall@education.edu,555-0214,Education Institute,Program Director,
+Peter,Allen,peter.allen@manufacturing.com,555-0215,Manufacturing Corp,Operations Director,
+Samantha,Young,samantha.young@logistics.net,555-0216,Logistics Network,Supply Chain Manager

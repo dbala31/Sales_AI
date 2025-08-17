@@ -1,0 +1,158 @@
+INFO:     Started server process [58009]
+INFO:     Waiting for application startup.
+2025-08-15 22:10:52.724 | INFO     | app.main:lifespan:18 - Starting Sales AI Contact Verification Platform
+[32m2025-08-15 22:10:52[0m | [1mINFO    [0m | [36mapp.main[0m:[36mlifespan[0m:[36m25[0m - [1mDatabase tables created[0m
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8002 (Press CTRL+C to quit)
+INFO:     127.0.0.1:61105 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61202 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61202 - "GET /api/verification/statistics HTTP/1.1" 200 OK
+[32m2025-08-15 22:11:49[0m | [31m[1mERROR   [0m | [36mapp.main[0m:[36mserver_error_handler[0m:[36m353[0m - [31m[1mInternal server error: 'HTTPException' object is not callable[0m
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/routing.py", line 747, in __call__
+    await self.default(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/routing.py", line 635, in not_found
+    raise HTTPException(status_code=404)
+starlette.exceptions.HTTPException
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 91, in __call__
+    await response(scope, receive, sender)
+TypeError: 'HTTPException' object is not callable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 179, in __call__
+    await response(scope, receive, send)
+TypeError: 'HTTPException' object is not callable
+INFO:     127.0.0.1:61202 - "GET /favicon.ico HTTP/1.1" 500 Internal Server Error
+[32m2025-08-15 22:12:52[0m | [1mINFO    [0m | [36mapp.api.upload[0m:[36mupload_csv[0m:[36m46[0m - [1mFile uploaded: 0f954fdf-df4c-4646-89d7-558939e1f559_Fake_Contacts_CSV.csv[0m
+[32m2025-08-15 22:12:52[0m | [1mINFO    [0m | [36mapp.utils.csv_processor[0m:[36mprocess_csv[0m:[36m111[0m - [1mDetected encoding: ascii[0m
+[32m2025-08-15 22:12:52[0m | [1mINFO    [0m | [36mapp.utils.csv_processor[0m:[36mprocess_csv[0m:[36m115[0m - [1mLoaded CSV with 20 rows and 7 columns[0m
+[32m2025-08-15 22:12:52[0m | [1mINFO    [0m | [36mapp.utils.csv_processor[0m:[36mprocess_csv[0m:[36m119[0m - [1mNormalized columns: ['first_name', 'last_name', 'job_title', 'company', 'domain', 'email', 'phone'][0m
+[32m2025-08-15 22:12:52[0m | [1mINFO    [0m | [36mapp.utils.csv_processor[0m:[36mprocess_csv[0m:[36m123[0m - [1mCleaning stats: {'total_rows': 20, 'valid_rows': 18, 'missing_email': 2, 'missing_phone': 4, 'invalid_email': 0, 'invalid_phone': 20, 'duplicates_removed': 0, 'rows_removed': 2}[0m
+[32m2025-08-15 22:12:52[0m | [1mINFO    [0m | [36mapp.api.upload[0m:[36mupload_csv[0m:[36m73[0m - [1mCreated batch 1 with 18 contacts[0m
+[32m2025-08-15 22:12:52[0m | [31m[1mERROR   [0m | [36mapp.main[0m:[36mserver_error_handler[0m:[36m353[0m - [31m[1mInternal server error: Unable to serialize unknown type: <class 'numpy.int64'>[0m
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/fastapi/routing.py", line 292, in app
+    content = await serialize_response(
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/fastapi/routing.py", line 160, in serialize_response
+    return field.serialize(
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/fastapi/_compat.py", line 147, in serialize
+    return self._type_adapter.dump_python(
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/pydantic/type_adapter.py", line 314, in dump_python
+    return self.serializer.to_python(
+pydantic_core._pydantic_core.PydanticSerializationError: Unable to serialize unknown type: <class 'numpy.int64'>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 179, in __call__
+    await response(scope, receive, send)
+TypeError: 'HTTPException' object is not callable
+INFO:     127.0.0.1:61288 - "POST /api/upload/csv HTTP/1.1" 500 Internal Server Error
+[32m2025-08-15 22:13:10[0m | [1mINFO    [0m | [36mapp.api.upload[0m:[36mupload_csv[0m:[36m46[0m - [1mFile uploaded: fff959dd-e6e0-4100-8104-8ec2f83ef660_Fake_Contacts_CSV.csv[0m
+[32m2025-08-15 22:13:10[0m | [1mINFO    [0m | [36mapp.utils.csv_processor[0m:[36mprocess_csv[0m:[36m111[0m - [1mDetected encoding: ascii[0m
+[32m2025-08-15 22:13:10[0m | [1mINFO    [0m | [36mapp.utils.csv_processor[0m:[36mprocess_csv[0m:[36m115[0m - [1mLoaded CSV with 20 rows and 7 columns[0m
+[32m2025-08-15 22:13:10[0m | [1mINFO    [0m | [36mapp.utils.csv_processor[0m:[36mprocess_csv[0m:[36m119[0m - [1mNormalized columns: ['first_name', 'last_name', 'job_title', 'company', 'domain', 'email', 'phone'][0m
+[32m2025-08-15 22:13:10[0m | [1mINFO    [0m | [36mapp.utils.csv_processor[0m:[36mprocess_csv[0m:[36m123[0m - [1mCleaning stats: {'total_rows': 20, 'valid_rows': 18, 'missing_email': 2, 'missing_phone': 4, 'invalid_email': 0, 'invalid_phone': 20, 'duplicates_removed': 0, 'rows_removed': 2}[0m
+[32m2025-08-15 22:13:10[0m | [1mINFO    [0m | [36mapp.api.upload[0m:[36mupload_csv[0m:[36m73[0m - [1mCreated batch 2 with 18 contacts[0m
+[32m2025-08-15 22:13:10[0m | [31m[1mERROR   [0m | [36mapp.main[0m:[36mserver_error_handler[0m:[36m353[0m - [31m[1mInternal server error: Unable to serialize unknown type: <class 'numpy.int64'>[0m
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/fastapi/routing.py", line 292, in app
+    content = await serialize_response(
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/fastapi/routing.py", line 160, in serialize_response
+    return field.serialize(
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/fastapi/_compat.py", line 147, in serialize
+    return self._type_adapter.dump_python(
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/pydantic/type_adapter.py", line 314, in dump_python
+    return self.serializer.to_python(
+pydantic_core._pydantic_core.PydanticSerializationError: Unable to serialize unknown type: <class 'numpy.int64'>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/fastapi/applications.py", line 1106, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/dbala/Downloads/sales_ai/venv/lib/python3.10/site-packages/starlette/middleware/errors.py", line 179, in __call__
+    await response(scope, receive, send)
+TypeError: 'HTTPException' object is not callable
+INFO:     127.0.0.1:61318 - "POST /api/upload/csv HTTP/1.1" 500 Internal Server Error
